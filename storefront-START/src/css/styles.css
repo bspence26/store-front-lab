@@ -83,7 +83,7 @@ main {
 }
 
 /* Responsove Layout */
-/* @media (min-width: 675px) {
+@media (min-width: 675px) {
   body {
     background-color: crimson;
   }
@@ -125,4 +125,4 @@ main {
     max-width: none;
     flex: 1;
   }
-} */
+}
