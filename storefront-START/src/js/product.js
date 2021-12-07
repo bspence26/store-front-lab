@@ -3,7 +3,7 @@
   // create template
   const markUp = renderProductPage(product);
 
-  document.querySelector("main").innerHTML.markUp;
+  document.querySelector("main").innerHTML = markUp;
 
   function renderProductPage(product) {
     const { id, name, price, sizes, long, meta, productShots } = product;
@@ -38,9 +38,7 @@
         <h2 class="title">${name}</h2>
         <p class="price">${price / 100}</p>
       </header>
-      <ul class="sizes">
-    ${sizeFormatter(sizes)}
-      </ul>
+   ${sizeFormatter(sizes)}
     
       <div class="quantity">quantity</div>
       <ul class="controls">
@@ -68,7 +66,7 @@
   function sizeFormatter(sizes) {
     let markUp = `
   
-  <ul class="sizes">`;
+  <ul class="sizeList">`;
     sizes.forEach((sizes) => {
       markUp += `<li class="sizes">${sizes}</li>`;
     });

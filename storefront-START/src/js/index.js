@@ -24,11 +24,9 @@
                 <div class="image">
                     <img src="assets/shoes/${name.toLowerCase()}/${thumbnail}" alt="${name} shoes by jim hortons" />
                 </div>
-
                 <header class="name">
                     <h2>${name}</h2>
                 </header>
-
                 <p class="price">$${price / 100}</p>
             </aside>
             `;
@@ -60,13 +58,7 @@
   }
 })();
 
-// // Click Event Listner PRODUCT
-// function onViewProductDetails(e) {
-//   // id of an item that is clicked
-//   const key = Number(e.currentTarget.dataset.key);
-//   const productData = store.find((product) => product.id === key);
-//   // set location storage
-//   localStorage.setItem("prouct", productData);
-//   // location navigate to the product page
-//   window.location.assign("product.html");
-// }
+// when clicking on the delete buttons on newly creating table rows
+// the icon does not seem to be recognize being touched
+
+// need to finish: timer, row deleter, adjusting debits and credits when rows are deleted

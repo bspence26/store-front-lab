@@ -35,9 +35,18 @@
   text-align: center;
   font-size: 0.8rem;
   font-weight: 600;
+  margin: 0.5rem;
 }
 .quanitity {
   margin: 1rem 0;
+}
+.sizesList {
+  display: flex;
+  box-shadow: 0 0 3px 0 grey;
+  padding: 0.5rem;
+  border: 3px solid #ffffff;
+  width: 48px;
+  text-align: center;
 }
 button {
   background-color: transparent;
