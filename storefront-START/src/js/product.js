@@ -1,10 +1,23 @@
 (function () {
+  // Checking to see if a product has been clicked
+  // If product isnt click- user goes back to index( we need data to build page- no data no page)
+  if (!localStorage.getItem("product")) {
+    console.log("doesnt exist");
+    window.location.assign("index.html");
+  }
+  // Data from the store fron\/
   const product = JSON.parse(localStorage.getItem("product"));
-  // create template
+  const cartItems = JSON.parse(localStorage.getItem("cart"));
+  //  step1- update cart count
   const markUp = renderProductPage(product);
 
-  document.querySelector("main").innerHTML = markUp;
+  document.querySelector("main").append(markUp);
 
+  // Update cartcount
+  function updateCartCount() {
+    // always grabbing from local storage
+    document.querySelector("#cartCount").textContent = cartItems.length;
+  }
   function renderProductPage(product) {
     const { id, name, price, sizes, long, meta, productShots } = product;
     // seed into template
@@ -42,8 +55,8 @@
     
       <div class="quantity">quantity</div>
       <ul class="controls">
-        <li><button data-let=${id} class="add-to-cart">Add to Cart</button></li>
-        <li><button class="checkout">CheckOut</button></li>
+        <li><button id="addToCart" data-key=${id} class="add-to-cart">Add to Cart</button></li>
+        <li><button id="checkOut" class="checkout">CheckOut</button></li>
       </ul>
       <div class="description">
         <h3>Description</h3>
@@ -61,7 +74,23 @@
       </div>
     </section>
     `;
-    return template;
+    const element = document.createRange().createContextualFragment(template)
+      .children[0];
+    // query element
+    element
+      .querySelector(".add-to-cart")
+      .addEventListener("click", onAddToCart);
+    return element;
+  }
+  //   add to cart function
+  function onAddToCart(e) {
+    const cartObject = {
+      id: e.currentTarget.dataset.key,
+      quantity: 1,
+    };
+    cartItems.push(cartObject);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    updateCartCount();
   }
   function sizeFormatter(sizes) {
     let markUp = `
@@ -74,22 +103,12 @@
     return markUp;
   }
 })();
+// const cart = JSON.parse(localStorage.getItem('cart'))
+// const obj={
+//   id=2,
+//   quantity=1,
+// }
+// cart.push(obj)
 
-// (function () {
-//   console.log(localStorage.getItem("key"));
-// })();
-
-// section class="product">
-// <header>
-//    <h2>${name}</h2>
-//       <p>${price}</p>
-// </header>
-// <p>${long}</p>
-// <footer>
-// <ul>
-// <li><button>add to cart</button></li>
-// <li><button>checkout</button></li>
-// </ul>
-// </footer>
-// </section>
-// <
+// localStorage.setItem('cart',JSON.stringify(cart))
+// create template

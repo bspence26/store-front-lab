@@ -1,6 +1,19 @@
 (function () {
   // fetch data
   let store;
+  // const cartItems = [{ id: 1, quantity: 0 }];
+  // document.querySelector("#cartCount").textContent = cartItems.length;
+  // localStorage / setItem("cart", JSON.stringify(cartItems));
+
+  if (!localStorage.getItem("cart")) {
+    const temp = [];
+    console.log("create cart");
+    localStorage.setItem("cart", JSON.stringify(temp));
+  }
+  document.querySelector("#cartCount").textContent = JSON.parse(
+    localStorage.getItem("cart")
+  ).length;
+
   fetch("./data/shoes.json")
     .then((res) => res.json())
     .then((data) => {

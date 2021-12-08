@@ -13,6 +13,11 @@
   box-shadow: 0 0 3px 0 grey;
   border: 5px solid #ffffff;
 }
+.shots li:nth-child(2),
+.shots li:nth-child(3),
+.shots li:nth-child(4) {
+  display: none;
+}
 .title {
   font-size: 1.76rem;
   font-weight: 600;
@@ -40,9 +45,8 @@
 .quanitity {
   margin: 1rem 0;
 }
-.sizesList {
+.sizeList {
   display: flex;
-  box-shadow: 0 0 3px 0 grey;
   padding: 0.5rem;
   border: 3px solid #ffffff;
   width: 48px;
@@ -88,8 +92,8 @@ button {
     gap: 1rem;
   }
   .shots {
-    width: 45%;
-    max-width: 600px;
+    width: 100%;
+    /* max-width: 600px; */
   }
   .details {
     padding: 0 2rem;
